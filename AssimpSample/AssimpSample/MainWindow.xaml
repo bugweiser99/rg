@@ -1,0 +1,39 @@
+﻿<Window x:Class="AssimpSample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="SharpGL WPF Application" Height="350" Width="525" 
+        xmlns:sharpGL="clr-namespace:SharpGL.WPF;assembly=SharpGL.WPF" KeyDown="Window_KeyDown"
+        WindowState="Maximized">
+    <Grid>
+        <DockPanel>
+            <ToolBarTray x:Name="ToolBarTray" DockPanel.Dock="Top" Height="30">
+                <ToolBar Band="2" Margin="4,0,-16,0" Height="35">
+                    <StackPanel Orientation="Horizontal">
+                        <Label Margin="0,0,0,2" Width="89">Ramp height:</Label>
+                        <Slider x:Name="RampHeight" ValueChanged="RampHeight_ValueChanged" Value="3" HorizontalAlignment="Left" 
+                                    Margin="20,10,0,0" VerticalAlignment="Top" Width="80" Minimum="400" Maximum="800"  TickFrequency="1"/>
+                        <Label>Truck scale:</Label>
+                        <Slider x:Name="TruckScale" Value="0.01" ValueChanged="TruckScale_ValueChanged" HorizontalAlignment="Left" 
+                                    Margin="20,10,0,0" VerticalAlignment="Top" Width="80" Minimum="0.01" Maximum="0.02"/>
+                        <Label Margin="0,0,0,2" Width="30">Red:</Label>
+                        <Slider x:Name="RedSlider" Value="0.0" ValueChanged="RedSlider_ValueChanged" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" 
+                                    Width="50"  Minimum="0" Maximum="1"/>
+                        <Label Margin="0,0,0,2" Width="45">Green:</Label>
+                        <Slider x:Name="GreenSlider" Value="0.0" ValueChanged="GreenSlider_ValueChanged" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" 
+                                    Width="50"  Minimum="0" Maximum="1"/>
+                        <Label Margin="0,0,0,2" Width="40">Blue:</Label>
+                        <Slider x:Name="BlueSlider"  Value="1.0" ValueChanged="BlueSlider_ValueChanged" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" 
+                                    Width="50"  Minimum="0" Maximum="1"/>
+                    </StackPanel>
+                </ToolBar>
+            </ToolBarTray>
+
+            <!-- The OpenGL control provides a OpenGL drawing surface. -->
+            <sharpGL:OpenGLControl 
+                Name="openGLControl" OpenGLDraw="openGLControl_OpenGLDraw" 
+                OpenGLInitialized="openGLControl_OpenGLInitialized" Resized="openGLControl_Resized"
+                DrawFPS="True" RenderContextType="FBO" FrameRate="10"/>
+        </DockPanel>
+        
+    </Grid>
+</Window>
